@@ -8,6 +8,6 @@ setup(
     author='Yuning Shen',
     author_email='ynshen23@gmail.com',
     license='unlicense',
-    packages=['pkg_prvt_test'],
+    packages=['pkg_private_test'],
     zip_safe=False
 )
