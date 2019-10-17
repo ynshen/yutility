@@ -1,3 +1,4 @@
+
 class DevMode:
 
     def __init__(self, pkg, auto_on=True):

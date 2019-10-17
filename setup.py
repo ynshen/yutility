@@ -1,13 +1,13 @@
-from setuptools import setup
+import setuptools
 
-setup(
+setuptools.setup(
     name='yuning_util',
     version='0.0.2',
     description='Daily utility functions in develop',
-    url='git@github.com:ynshen/pkg_private_test.git',
+    url='git@github.com:ynshen/utility.git',
     author='Yuning Shen',
     author_email='ynshen23@gmail.com',
     license='unlicense',
-    packages=['pkg_private'],
+    packages=setuptools.find_packages(),
     zip_safe=False
 )
