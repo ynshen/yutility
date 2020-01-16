@@ -32,10 +32,15 @@ class DevMode:
         # redirect logging info to standard output
         import logging
         root = logging.getLogger()
-        handler = logging.StreamHandler(sys.stdout)
-        root.addHandler(handler)
-        if get_log_handler:
-            return handler
+        if root.handlers != [] and any([handler.name is not None and 'stdout' in handler.name for handler in root.handlers]):
+            pass
+        else:
+            handler = logging.StreamHandler(sys.stdout)
+            handler.name = 'stdout'
+            root.addHandler(handler)
+        # if get_log_handler:
+            # return handler
+        root.setLevel(logging.INFO)
     
     def off(self):
         if self.pkg_path in sys.path:
