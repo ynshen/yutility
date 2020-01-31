@@ -4,7 +4,7 @@ import sys
 
 
 class DevMode:
-    """Control package path in local tower dev env
+    """Control package path in local and tower dev env
     """
 
     def __init__(self, pkg, pkg_path=None, auto_on=True):
@@ -34,17 +34,16 @@ class DevMode:
         if auto_on:
             self.on()
 
-    def on(self, get_log_handler=False):
+    def on(self):
         """Turn on the dev mode"""
 
         # prioritize the dev package location
         for p in self.pkg_path:
-
-        if p not in sys.path:
-            sys.path.insert(0, p)
-        elif sys.path.index(p) !=0:
-            sys.path.remove(p)
-            sys.path.insert(0, p)
+            if p not in sys.path:
+                sys.path.insert(0, p)
+            elif sys.path.index(p) != 0:
+                sys.path.remove(p)
+                sys.path.insert(0, p)
 
         # redirect logging info to standard output
         import logging

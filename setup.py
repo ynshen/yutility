@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='yuning_util',
-    version='0.0.3',
+    version='0.4',
     description='Daily utility functions in develop',
     url='git@github.com:ynshen/utility.git',
     author='Yuning Shen',
