@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name='yuning_util',
+    name='yuning-util',
     version='0.4',
     description='Daily utility functions in develop',
     url='git@github.com:ynshen/utility.git',
