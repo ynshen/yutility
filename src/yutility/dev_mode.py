@@ -120,6 +120,9 @@ class DevMode:
 
     def on(self, project):
         """Turn on the dev mode by prioritizing python PATHs and assigning env variable values"""
+        # redirect logging info to standard output
+        logging.add_console_handler()
+        logging.set_level('info')
 
         if project not in self.config.keys():
             logging.error(f'{project} not found', error_type=ValueError)
@@ -135,8 +138,6 @@ class DevMode:
         for env_var, value in self.config[project]['env_var'].items():
             os.environ[env_var] = value
 
-        # redirect logging info to standard output
-        logging.add_console_handler()
         self.current_on = project
 
     def off(self, project=None):

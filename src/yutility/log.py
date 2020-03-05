@@ -54,7 +54,7 @@ class logging:
         return any([handler.get_name() == name for handler in logger.handlers])
 
     @staticmethod
-    def add_console_handler(logger=None, name='console', formatter=default_formatter):
+    def add_console_handler(logger=None, name='console', formatter=default_formatter, level=lg.INFO):
         """Add console handler (write to stdout/stderr) to the logger (default root logger)"""
         import sys
 
@@ -63,11 +63,13 @@ class logging:
         if not logging.check_handler_name(name, logger=logger):
             console_handler = lg.StreamHandler(sys.stdout)
             console_handler.set_name(name)
+            console_handler.setLevel(level)
             console_handler.setFormatter(formatter)
             logger.addHandler(console_handler)
+        logger.setLevel(level)
 
     @staticmethod
-    def add_file_handler(file_path, logger=None, name='logfile', formatter=default_formatter):
+    def add_file_handler(file_path, logger=None, name='logfile', formatter=default_formatter, level=lg.INFO):
         """Add file handler (write to log file) to the logger (default root logger)"""
 
         if logger is None:
@@ -76,7 +78,19 @@ class logging:
             file_handler = lg.FileHandler(file_path)
             file_handler.set_name(name)
             file_handler.setFormatter(formatter)
+            file_handler.setLevel(level)
             logger.addHandler(file_handler)
+        logger.setLevel(level)
+
+    @staticmethod
+    def set_level(level='info'):
+        allowed = {
+            'info': lg.INFO,
+            'warning': lg.WARNING,
+            'error': lg.ERROR,
+            'debug': lg.DEBUG,
+        }
+        lg.getLogger().setLevel(allowed[level.lower()])
 
 
 class Logger:

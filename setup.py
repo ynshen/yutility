@@ -14,7 +14,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='yutility',
-    version='0.6.1',
+    version='0.6.3',
     description='Utility functions for development',
     long_description=long_description,
     long_description_content_type='text/markdown',
